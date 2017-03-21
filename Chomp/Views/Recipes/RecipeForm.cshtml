@@ -1,0 +1,30 @@
+﻿@model Chomp.ViewModels.RecipeFormViewModel
+@{
+    ViewBag.Title = "RecipeForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+@using (Html.BeginForm("Save", "Recipes"))
+{
+    <div class="form-group">
+        @Html.LabelFor(r => r.Recipe.Name)
+        @Html.TextBoxFor(r => r.Recipe.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(r => r.Recipe.CookingTimeInMins)
+        @Html.TextBoxFor(r => r.Recipe.CookingTimeInMins, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(r => r.Recipe.CuisineId)
+        @Html.DropDownListFor(r => r.Recipe.CuisineId, new SelectList(Model.Cuisines, "Id", "Name"), "", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(r => r.Recipe.DifficultyId)
+        @Html.DropDownListFor(r => r.Recipe.DifficultyId, new SelectList(Model.Difficulties, "Id", "Name"), "", new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(r => r.Recipe.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+}

@@ -1,0 +1,12 @@
+﻿@model Chomp.Models.Recipe
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+<ul>
+    <li>Cooking time required: @Model.CookingTimeInMins mins</li>
+    <li>Cuisine: @Model.Cuisine.Name</li>
+    <li>Difficulty: @Model.Difficulty.Name</li>
+</ul>
