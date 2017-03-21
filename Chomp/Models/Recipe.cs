@@ -28,5 +28,7 @@ namespace Chomp.Models
         [Required]
         [Display(Name = "Cooking time in minutes")]
         public int CookingTimeInMins { get; set; }
+
+        public string AspNetUserId { get; set; }
     }
 }

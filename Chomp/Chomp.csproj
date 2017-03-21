@@ -214,6 +214,10 @@
     <Compile Include="Migrations\201703210918520_PopulateCuisines.Designer.cs">
       <DependentUpon>201703210918520_PopulateCuisines.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703210932068_AddAspNetUserIdToRecipe.cs" />
+    <Compile Include="Migrations\201703210932068_AddAspNetUserIdToRecipe.Designer.cs">
+      <DependentUpon>201703210932068_AddAspNetUserIdToRecipe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -309,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703210918520_PopulateCuisines.resx">
       <DependentUpon>201703210918520_PopulateCuisines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703210932068_AddAspNetUserIdToRecipe.resx">
+      <DependentUpon>201703210932068_AddAspNetUserIdToRecipe.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

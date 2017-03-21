@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Chomp.Models;
 using System.Data.Entity;
 using Chomp.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Chomp.Controllers
 {
@@ -29,7 +31,8 @@ namespace Chomp.Controllers
             var recipes = _context.Recipes
                 .Include(r => r.Cuisine)
                 .Include(r => r.Difficulty)
-                .ToList();
+                .ToList()
+                .Where(r => r.AspNetUserId == User.Identity.GetUserId());
 
             return View(recipes);
         }
@@ -51,7 +54,8 @@ namespace Chomp.Controllers
         {
             var difficulties = _context.Difficulties.ToList();
             var cuisines = _context.Cuisines.ToList();
-            var viewModel = new RecipeFormViewModel()
+
+            var viewModel = new RecipeFormViewModel
             {
                 Difficulties = difficulties,
                 Cuisines = cuisines
@@ -81,7 +85,10 @@ namespace Chomp.Controllers
         public ActionResult Save(Recipe recipe)
         {
             if (recipe.Id == 0)
+            {
+                recipe.AspNetUserId = User.Identity.GetUserId();
                 _context.Recipes.Add(recipe);
+            }
             else
             {
                 var recipeInDb = _context.Recipes.Single(r => r.Id == recipe.Id);
