@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Chomp.Controllers
 {
+    [Authorize]
     public class RecipesController : Controller
     {
         private ApplicationDbContext _context;
