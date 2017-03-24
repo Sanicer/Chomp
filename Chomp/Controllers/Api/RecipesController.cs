@@ -34,6 +34,19 @@ namespace Chomp.Controllers.Api
             return Ok(recipeDtos);
         }
 
+        //[Route("api/recipes")]
+        //[HttpGet]
+        //public IHttpActionResult GetRecipes()
+        //{
+        //    var recipeDtos = _context.Recipes
+        //        .Include(r => r.Cuisine)
+        //        .Include(r => r.Difficulty)
+        //        .ToList()
+        //        .Select(Mapper.Map<Recipe, RecipeDto>);
+
+        //    return Ok(recipeDtos);
+        //}
+
         [Route("api/recipes/{id:int}")]
         [HttpGet]
         public IHttpActionResult GetRecipes(int id)

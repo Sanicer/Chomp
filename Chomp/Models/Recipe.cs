@@ -30,5 +30,7 @@ namespace Chomp.Models
         public int CookingTimeInMins { get; set; }
 
         public string AspNetUserId { get; set; }
+
+        public string Instruction { get; set; }
     }
 }

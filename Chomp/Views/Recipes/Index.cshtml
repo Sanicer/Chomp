@@ -1,11 +1,12 @@
-﻿@model IEnumerable<Chomp.Models.Recipe>
+﻿@using System.Diagnostics
+@using Chomp.Models
+@model IEnumerable<Chomp.Models.Recipe>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Recipes</h2>
-
 @Html.ActionLink("New recipe", "New", "Recipes", new { @class = "btn btn-primary" })
 <table id="recipes" class="table table-bordered table-hover">
     <thead>
@@ -17,15 +18,13 @@
     </thead>
 
     <tbody>
-        @foreach (var recipe in Model)
-            {
-            <tr>
-                <td>@Html.ActionLink(recipe.Name, "Edit", "Recipes", new { id = recipe.Id }, null)</td>
-                <td>@recipe.Cuisine.Name</td>
-                <td>@recipe.Difficulty.Name</td>
-            </tr>
-        }
+    @foreach (var recipe in Model) {
+        <tr>
+            <td>@Html.ActionLink(recipe.Name, "Edit", "Recipes", new { id = recipe.Id }, null)</td>
+            <td>@recipe.Cuisine.Name</td>
+            <td>@recipe.Difficulty.Name</td>
+        </tr>
+    }
+
     </tbody>
-
 </table>
-
