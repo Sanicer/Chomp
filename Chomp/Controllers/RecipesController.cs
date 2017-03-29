@@ -67,10 +67,13 @@ namespace Chomp.Controllers
 
         public ActionResult Edit(int id)
         {
+
             var recipe = _context.Recipes.SingleOrDefault(r => r.Id == id);
 
             if (recipe == null)
                 return HttpNotFound();
+            if (User.Identity.GetUserId() != recipe.AspNetUserId)
+                return RedirectToAction("Index", "Recipes");
 
             var viewModel = new RecipeFormViewModel
             {
@@ -82,6 +85,35 @@ namespace Chomp.Controllers
                     .Where(r => r.RecipeId == id)
                     .ToList()
             };
+
+            return View("RecipeForm", viewModel);
+        }
+
+        public ActionResult DeleteIngredient(int id, string userId, int recipeId)
+        {
+            if (User.Identity.GetUserId() != userId)
+                return RedirectToAction("Index", "Recipes");
+
+            var ingredientInDb = _context.Ingredients.SingleOrDefault(r => r.Id == id);
+
+            if (ingredientInDb == null)
+                return HttpNotFound();
+
+            _context.Ingredients.Remove(ingredientInDb);
+            _context.SaveChanges();
+
+            var recipe = _context.Recipes.SingleOrDefault(r => r.Id == recipeId);
+            var viewModel = new RecipeFormViewModel
+            {
+                Recipe = recipe,
+                Difficulties = _context.Difficulties.ToList(),
+                Cuisines = _context.Cuisines.ToList(),
+                Ingredient = new Ingredient(),
+                Ingredients = _context.Ingredients
+                    .Where(r => r.RecipeId == recipeId)
+                    .ToList()
+            };
+
 
             return View("RecipeForm", viewModel);
         }

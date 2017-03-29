@@ -1,4 +1,5 @@
 ﻿@using Chomp.Models
+@using Microsoft.Ajax.Utilities
 @model Chomp.ViewModels.RecipeFormViewModel
 @{
     ViewBag.Title = "RecipeForm";
@@ -35,14 +36,19 @@
         @Html.TextBoxFor(r => r.Ingredient.Name, new { @class = "form-control" })
     </div>
 
-
-    for (var i = 0; i < Model.Ingredients.Count; i++)
+    if (Model.Ingredients != null)
     {
-        <div class="form-group">
-            @Html.LabelFor(r => Model.Ingredients[i].Name)
-            @Html.TextBoxFor(r => Model.Ingredients[i].Name, new { @class = "form-control" })
-            @Html.HiddenFor(r => Model.Ingredients[i].Id)
-        </div>
+        for (var i = 0; i < Model.Ingredients.Count; i++)
+        {
+            <div class="form-group">
+                @Html.LabelFor(r => Model.Ingredients[i].Name)
+                @Html.TextBoxFor(r => Model.Ingredients[i].Name, new { @class = "form-control" })
+                @Html.HiddenFor(r => Model.Ingredients[i].Id)
+                @Html.ActionLink("Delete ingredient", "DeleteIngredient", "Recipes",
+                    new { id = Model.Ingredients[i].Id, userId = Model.Recipe.AspNetUserId, recipeId = Model.Recipe.Id },
+                    new { @class = "btn btn-primary" })
+            </div>
+        }
     }
 
 
