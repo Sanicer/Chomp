@@ -7,6 +7,8 @@ namespace Chomp.ViewModels
     {
         public IEnumerable<Cuisine> Cuisines { get; set; }
         public IEnumerable<Difficulty> Difficulties { get; set; }
+        public IList<Ingredient> Ingredients { get; set; }
+        public Ingredient Ingredient { get; set; }
         public Recipe Recipe { get; set; }
         public string Title
         {

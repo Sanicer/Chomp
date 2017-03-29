@@ -220,6 +220,7 @@
     <Compile Include="Controllers\RecipesController.cs" />
     <Compile Include="Dtos\CuisineDto.cs" />
     <Compile Include="Dtos\DifficultyDto.cs" />
+    <Compile Include="Dtos\IngredientDto.cs" />
     <Compile Include="Dtos\RecipeDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -244,12 +245,65 @@
     <Compile Include="Migrations\201703240619506_AddInstructionToRecipe.Designer.cs">
       <DependentUpon>201703240619506_AddInstructionToRecipe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703240651462_AddIngredient.cs" />
+    <Compile Include="Migrations\201703240651462_AddIngredient.Designer.cs">
+      <DependentUpon>201703240651462_AddIngredient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703240653073_RecipeIdToIngredient.cs" />
+    <Compile Include="Migrations\201703240653073_RecipeIdToIngredient.Designer.cs">
+      <DependentUpon>201703240653073_RecipeIdToIngredient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703240720077_RemoveIngredientsFromRecipe.cs" />
+    <Compile Include="Migrations\201703240720077_RemoveIngredientsFromRecipe.Designer.cs">
+      <DependentUpon>201703240720077_RemoveIngredientsFromRecipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703240721098_CheckIngredientsTable.cs" />
+    <Compile Include="Migrations\201703240721098_CheckIngredientsTable.Designer.cs">
+      <DependentUpon>201703240721098_CheckIngredientsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703261606327_RemoveRecipeIdAndAddIngredients.cs" />
+    <Compile Include="Migrations\201703261606327_RemoveRecipeIdAndAddIngredients.Designer.cs">
+      <DependentUpon>201703261606327_RemoveRecipeIdAndAddIngredients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703261608570_CheckForeignKeyRecipeID.cs" />
+    <Compile Include="Migrations\201703261608570_CheckForeignKeyRecipeID.Designer.cs">
+      <DependentUpon>201703261608570_CheckForeignKeyRecipeID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703261611258_ReAddRecipeId.cs" />
+    <Compile Include="Migrations\201703261611258_ReAddRecipeId.Designer.cs">
+      <DependentUpon>201703261611258_ReAddRecipeId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703261658052_CheckForChanges.cs" />
+    <Compile Include="Migrations\201703261658052_CheckForChanges.Designer.cs">
+      <DependentUpon>201703261658052_CheckForChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703271107553_ReAddedIngredientsIdToRecipe.cs" />
+    <Compile Include="Migrations\201703271107553_ReAddedIngredientsIdToRecipe.Designer.cs">
+      <DependentUpon>201703271107553_ReAddedIngredientsIdToRecipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703280222558_RemovingIngredientsIdFromRecipe.cs" />
+    <Compile Include="Migrations\201703280222558_RemovingIngredientsIdFromRecipe.Designer.cs">
+      <DependentUpon>201703280222558_RemovingIngredientsIdFromRecipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703280250391_RemovingRecipeIdFromIngredientsAndAddingIngredientsToRecipe.cs" />
+    <Compile Include="Migrations\201703280250391_RemovingRecipeIdFromIngredientsAndAddingIngredientsToRecipe.Designer.cs">
+      <DependentUpon>201703280250391_RemovingRecipeIdFromIngredientsAndAddingIngredientsToRecipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703280332301_AddRecipeIdToIngredientsAndRemoveIngredientsFromRecipe.cs" />
+    <Compile Include="Migrations\201703280332301_AddRecipeIdToIngredientsAndRemoveIngredientsFromRecipe.Designer.cs">
+      <DependentUpon>201703280332301_AddRecipeIdToIngredientsAndRemoveIngredientsFromRecipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703280351143_AddIngredientsIdListToRecipe.cs" />
+    <Compile Include="Migrations\201703280351143_AddIngredientsIdListToRecipe.Designer.cs">
+      <DependentUpon>201703280351143_AddIngredientsIdListToRecipe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Cuisine.cs" />
     <Compile Include="Models\Difficulty.cs" />
+    <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -518,6 +572,45 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703240619506_AddInstructionToRecipe.resx">
       <DependentUpon>201703240619506_AddInstructionToRecipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703240651462_AddIngredient.resx">
+      <DependentUpon>201703240651462_AddIngredient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703240653073_RecipeIdToIngredient.resx">
+      <DependentUpon>201703240653073_RecipeIdToIngredient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703240720077_RemoveIngredientsFromRecipe.resx">
+      <DependentUpon>201703240720077_RemoveIngredientsFromRecipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703240721098_CheckIngredientsTable.resx">
+      <DependentUpon>201703240721098_CheckIngredientsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703261606327_RemoveRecipeIdAndAddIngredients.resx">
+      <DependentUpon>201703261606327_RemoveRecipeIdAndAddIngredients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703261608570_CheckForeignKeyRecipeID.resx">
+      <DependentUpon>201703261608570_CheckForeignKeyRecipeID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703261611258_ReAddRecipeId.resx">
+      <DependentUpon>201703261611258_ReAddRecipeId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703261658052_CheckForChanges.resx">
+      <DependentUpon>201703261658052_CheckForChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703271107553_ReAddedIngredientsIdToRecipe.resx">
+      <DependentUpon>201703271107553_ReAddedIngredientsIdToRecipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703280222558_RemovingIngredientsIdFromRecipe.resx">
+      <DependentUpon>201703280222558_RemovingIngredientsIdFromRecipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703280250391_RemovingRecipeIdFromIngredientsAndAddingIngredientsToRecipe.resx">
+      <DependentUpon>201703280250391_RemovingRecipeIdFromIngredientsAndAddingIngredientsToRecipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703280332301_AddRecipeIdToIngredientsAndRemoveIngredientsFromRecipe.resx">
+      <DependentUpon>201703280332301_AddRecipeIdToIngredientsAndRemoveIngredientsFromRecipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703280351143_AddIngredientsIdListToRecipe.resx">
+      <DependentUpon>201703280351143_AddIngredientsIdListToRecipe.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

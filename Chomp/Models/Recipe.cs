@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace Chomp.Models
 {
@@ -29,8 +30,10 @@ namespace Chomp.Models
         [Display(Name = "Cooking time in minutes")]
         public int CookingTimeInMins { get; set; }
 
-        public string AspNetUserId { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
 
         public string Instruction { get; set; }
+
+        public string AspNetUserId { get; set; }
     }
 }

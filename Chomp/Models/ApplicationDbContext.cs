@@ -12,6 +12,7 @@ namespace Chomp.Models
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Cuisine> Cuisines { get; set; }
         public DbSet<Difficulty> Difficulties { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

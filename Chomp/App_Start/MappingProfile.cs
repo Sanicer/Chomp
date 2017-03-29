@@ -14,6 +14,8 @@ namespace Chomp.App_Start
             Mapper.CreateMap<Recipe, RecipeDto>();
             Mapper.CreateMap<Cuisine, CuisineDto>();
             Mapper.CreateMap<Difficulty, DifficultyDto>();
+            Mapper.CreateMap<Ingredient, IngredientDto>();
+
 
             Mapper.CreateMap<RecipeDto, Recipe>()
                 .ForMember(r => r.Id, opt => opt.Ignore());

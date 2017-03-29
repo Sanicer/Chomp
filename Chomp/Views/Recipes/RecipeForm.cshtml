@@ -1,4 +1,5 @@
-﻿@model Chomp.ViewModels.RecipeFormViewModel
+﻿@using Chomp.Models
+@model Chomp.ViewModels.RecipeFormViewModel
 @{
     ViewBag.Title = "RecipeForm";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -29,6 +30,24 @@
         @Html.TextAreaFor(r => r.Recipe.Instruction, new { @class = "form-control" })
     </div>
 
+    <div class="form-group">
+        @Html.LabelFor(r => r.Ingredient.Name)
+        @Html.TextBoxFor(r => r.Ingredient.Name, new { @class = "form-control" })
+    </div>
+
+
+    for (var i = 0; i < Model.Ingredients.Count; i++)
+    {
+        <div class="form-group">
+            @Html.LabelFor(r => Model.Ingredients[i].Name)
+            @Html.TextBoxFor(r => Model.Ingredients[i].Name, new { @class = "form-control" })
+            @Html.HiddenFor(r => Model.Ingredients[i].Id)
+        </div>
+    }
+
+
     @Html.HiddenFor(r => r.Recipe.Id)
+    @Html.HiddenFor(r => r.Ingredient.Id)
+
     <button type="submit" class="btn btn-primary">Save</button>
 }

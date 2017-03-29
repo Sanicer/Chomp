@@ -27,8 +27,8 @@ namespace Chomp.Dtos
         [Required]
         public int CookingTimeInMins { get; set; }
 
-        public string AspNetUserId { get; set; }
-
         public string Instruction { get; set; }
+
+        public string AspNetUserId { get; set; }
     }
 }

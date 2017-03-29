@@ -34,7 +34,6 @@ namespace Chomp.Controllers
                 .Include(r => r.Difficulty)
                 .ToList()
                 .Where(r => r.AspNetUserId == User.Identity.GetUserId());
-
             return View(recipes);
         }
 
@@ -59,7 +58,8 @@ namespace Chomp.Controllers
             var viewModel = new RecipeFormViewModel
             {
                 Difficulties = difficulties,
-                Cuisines = cuisines
+                Cuisines = cuisines,
+                Ingredient = new Ingredient()
             };
 
             return View("RecipeForm", viewModel);
@@ -72,23 +72,29 @@ namespace Chomp.Controllers
             if (recipe == null)
                 return HttpNotFound();
 
-            var viewModel = new RecipeFormViewModel()
+            var viewModel = new RecipeFormViewModel
             {
                 Recipe = recipe,
                 Difficulties = _context.Difficulties.ToList(),
-                Cuisines = _context.Cuisines.ToList()
+                Cuisines = _context.Cuisines.ToList(),
+                Ingredient = new Ingredient(),
+                Ingredients = _context.Ingredients
+                    .Where(r => r.RecipeId == id)
+                    .ToList()
             };
 
             return View("RecipeForm", viewModel);
         }
 
         [HttpPost]
-        public ActionResult Save(Recipe recipe)
+        public ActionResult Save(Recipe recipe, Ingredient ingredient, IList<Ingredient> ingredients)
         {
             if (recipe.Id == 0)
             {
                 recipe.AspNetUserId = User.Identity.GetUserId();
+                
                 _context.Recipes.Add(recipe);
+                _context.Ingredients.Add(ingredient);
             }
             else
             {
@@ -97,6 +103,19 @@ namespace Chomp.Controllers
                 recipeInDb.CookingTimeInMins = recipe.CookingTimeInMins;
                 recipeInDb.CuisineId = recipe.CuisineId;
                 recipeInDb.DifficultyId = recipe.DifficultyId;
+                if (!string.IsNullOrWhiteSpace(ingredient.Name))
+                {
+                    ingredient.RecipeId = recipe.Id; 
+                    _context.Ingredients.Add(ingredient);
+                }
+                if (ingredients != null)
+                {
+                    foreach (var item in ingredients)
+                    {
+                        var ingredientInDb = _context.Ingredients.Single(r => r.Id == item.Id);
+                        ingredientInDb.Name = item.Name;
+                    }
+                }
             }
 
             _context.SaveChanges();
