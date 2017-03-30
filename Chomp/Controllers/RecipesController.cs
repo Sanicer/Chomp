@@ -118,6 +118,25 @@ namespace Chomp.Controllers
             return View("RecipeForm", viewModel);
         }
 
+        public ActionResult Delete(int id )
+        {
+            var recipeInDb = _context.Recipes.Single(r => r.Id == id);
+            if (recipeInDb == null)
+                return HttpNotFound();
+
+            var ingredientsInDb = _context.Ingredients.Where(r => r.RecipeId == id).ToList();
+            _context.Recipes.Remove(recipeInDb);
+
+            if(ingredientsInDb.Count > 0) { 
+                foreach (var item in ingredientsInDb) { 
+                    _context.Ingredients.Remove(item);
+                }
+            }
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Recipes");
+        }
+
         [HttpPost]
         public ActionResult Save(Recipe recipe, Ingredient ingredient, IList<Ingredient> ingredients)
         {

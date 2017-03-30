@@ -56,4 +56,7 @@
     @Html.HiddenFor(r => r.Ingredient.Id)
 
     <button type="submit" class="btn btn-primary">Save</button>
+    @Html.ActionLink("Delete recipe", "Delete", "Recipes",
+                    new { id = Model.Recipe.Id },
+                    new { @class = "btn btn-primary" })
 }
